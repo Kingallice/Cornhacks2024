@@ -1,3 +1,5 @@
+from Services.GetKeys import GetAzureKey
+from Services.GetConfiguration import GetConfig
 
 def main() -> int:
     print("Hello World!")
@@ -5,4 +7,4 @@ def main() -> int:
     return 0
 
 if __name__ == '__main__':
-    print("Hello World!")
+    main()
