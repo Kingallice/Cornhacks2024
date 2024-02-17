@@ -1,5 +1,7 @@
 
 import azure.cognitiveservices.speech as speechsdk
+from azure.cognitiveservices.speech.audio import AudioInputStream, PushAudioInputStream, PullAudioInputStream
+
 import Services.GetKeys as key
 import Services.GetConfiguration as config
 from JakeTestDirectory import jakeTkinter as window
@@ -20,5 +22,14 @@ def recognize_from_microphone():
         elif result.reason == speechsdk.ResultReason.NoMatch:
             return("No speech could be recognized: {}".format(result.no_match_details))
 
-#Everything just returns right now. 
+#Everything just returns right now.
+def recognize_from_computer():
+    speech_config = speechsdk.SpeechConfig(subscription=key.GetAzureKey(), region=config.GetConfig("region"))
+    speech_config.speech_recognition_language = "en-US"
+
+
+
+
+
+
 window.build_window(recognize_from_microphone())
