@@ -1,8 +1,11 @@
 from Services.GetKeys import GetAzureKey
 from Services.GetConfiguration import GetConfig
+from GUI.MainMenu import MainMenu
 
 def main() -> int:
-    print("Hello World!")
+    main_menu = MainMenu()
+
+    main_menu.start()
 
     return 0
 
