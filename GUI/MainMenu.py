@@ -1,5 +1,6 @@
 import tkinter as tk
 from GUI.Window import Window
+from PIL import Image, ImageTk
 
 class MainMenu(Window):
 
@@ -7,9 +8,20 @@ class MainMenu(Window):
         super().__init__()
 
         frame = tk.Frame(self.window, name="frame")
+        # logoPNG = Image.open('./Resources/Images/babblebuddy.png')
+        
+        
+        # /img = tk.PhotoImage(master=frame, file='Resources/Images/babblebuddy.png', format="PNG")
+        self.img = ImageTk.PhotoImage(Image.open("./Resources/Images/babblebuddy.png"))
+        # print(image.height(), image.width())
 
-#        title_label = tk.Label(frame, text="BabbleBuddy", font=("Arial", 25))
-#        title_label.pack()
+        # logoPNG.
+        title_canvas = tk.Canvas(frame, width=self.img.width()+25, height=self.img.height())
+        title_canvas.pack()
+
+        title_canvas.create_image(self.img.width()//2+25,self.img.height()//2, image=self.img)
+    
+    #    title_label = tk.Label(frame, text="BabbleBuddy", font=("Arial", 25))
 
         info_label = tk.Label(frame, font=("Arial", 12), wraplength=275,
                               text="Break language barriers with BabbleBuddy!\n\nConvert audio into captions and translate into multiple languages in real-time.")
