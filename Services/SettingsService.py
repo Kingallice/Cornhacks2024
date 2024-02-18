@@ -30,11 +30,30 @@ class Settings:
     def GetSetting(self, key: str) -> str:
         if key in Settings._settings:
             return Settings._settings[key]
+        return ""
+    
+    def GetIntSetting(self, key: str) -> str:
+        if key in Settings._settings and Settings._settings[key].isdigit():
+            return int(self.GetSetting(key))
+        return 0
+    
+    def GetFloatSetting(self, key: str) -> str:
+        if key in Settings._settings and Settings._settings[key].isdecimal():
+            return float(self.GetSetting(key))
+        return 0
         
-    def UpdateSetting(self, key: str, value) -> str:
+    def UpdateSetting(self, key: str, value):
         Settings._settings[key] = value
         Settings.SaveSettings()
 
+    def SaveSettings(self):
+        try:
+            file = open("settings.json", "w")
+            file.write(json.dumps(Settings._settings))
+            file.close()
+        except Exception as ex:
+            print(ex)
+    
     def SaveSettings():
         try:
             file = open("settings.json", "w")

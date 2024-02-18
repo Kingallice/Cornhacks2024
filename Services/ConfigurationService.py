@@ -1,9 +1,9 @@
 class Config:
     def __init__(self) -> None:
         if not hasattr(Config, "_config"):
-            Config._config = Config.LoadConfig()
+            self._config = self.LoadConfig()
 
-    def LoadConfig():
+    def LoadConfig(self):
         config_lines = open("./configuration.yml").readlines()
 
         config = {}
@@ -14,8 +14,8 @@ class Config:
 
         return config
 
-def GetConfig(key: str) -> str:
-    if(key in Config._config.keys()):
-        return Config._config[key]
-    else: 
-        return None
+    def GetConfig(self, key: str) -> str:
+        if(key in self._config.keys()):
+            return self._config[key]
+        else:
+            return None

@@ -2,7 +2,7 @@ import pyaudio
 import wave
 
 audio = pyaudio.PyAudio()
-print(audio.get_device_info_by_index(1))
+print(audio.get_device_info_by_index(2))
 
 
 def record_audio():
@@ -10,7 +10,7 @@ def record_audio():
     CHANNELS = 8
     RATE = 16000
     CHUNK = 1024
-    RECORD_SECONDS = 10
+    RECORD_SECONDS = 2
     WAVE_OUTPUT_FILENAME = "output.wav"
 
     audio = pyaudio.PyAudio()
