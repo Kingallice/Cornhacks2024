@@ -5,6 +5,7 @@ class Window:
 
     def __init__(self) -> None:
         self.window = tk.Tk()
+        self.window.iconbitmap("Resources/Images/BBicon-2.ico")
 
         settings = Settings()
 
