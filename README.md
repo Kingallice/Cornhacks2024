@@ -1,4 +1,4 @@
-# BabbleBuddy
+# <img src="https://github.com/Kingallice/Cornhacks2024/blob/main/Resources/Images/babblebuddy.svg">
 
 ## General Information:
 
