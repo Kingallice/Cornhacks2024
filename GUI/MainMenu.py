@@ -1,17 +1,12 @@
 import tkinter as tk
+from GUI.Window import Window
 
-class MainMenu:
+class MainMenu(Window):
 
     def __init__(self):
-        self.window = tk.Tk()
+        super().__init__()
 
-        self.window.wm_title("BabbleBuddy")
-        w,h = 400,300
-
-        (ws, hs) = (self.window.winfo_screenwidth(), self.window.winfo_screenheight())
-        self.window.geometry("%dx%d+%d+%d" % (w, h, ws/2-w/2, hs/2-h/2))
-
-        frame = tk.Frame(self.window)
+        frame = tk.Frame(self.window, name="frame")
 
         title_label = tk.Label(frame, text="BabbleBuddy", font=("Arial", 25))
         title_label.pack()
@@ -28,17 +23,8 @@ class MainMenu:
 
         frame.pack(pady=15)
 
-    def start(self):
-        self.window.mainloop()
-
     def set_start_command(self, command):
-        self.window.children["start-btn"].configure(command=command)
+        self.children()["start-btn"].configure(command=command)
 
     def set_settings_command(self, command):
-        self.window.children["settings-btn"].configure(command=command)
-
-    def hide_menu(self):
-        self.window.withdraw()
-
-    def show_menu(self):
-        self.window.deiconify()
+        self.children()["settings-btn"].configure(command=command)
