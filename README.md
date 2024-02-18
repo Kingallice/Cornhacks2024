@@ -3,7 +3,7 @@
 ## General Information:
 
 ### Inspiration:
-> The purpose 
+>  We came up with this idea after thinking about some of the exchange students that attend our college. Many of our classes have at least a few foreign exchange students. Many of the foreign exchange students that we have encounted throughout are classes have diffculty learning and understanding content due to their language barrier. We thought we would bridge that gap by creating a real time translator.  
 
 ### What it does:
 > Analyzes speech and in semi-to-real time live captions it. In addition to live captions, the application is also able to translate these captions in the same time frame. 
@@ -24,6 +24,7 @@
 ### Built with:
 > - Python
 > - Azure API
+> - LibreTranslate API
 > - Love <3
 
 ### Contributors 
@@ -31,7 +32,6 @@
 - Jake Inthavongsa
 - Carissa Kelley
 - Noah Mosel
-
 
 
 
