@@ -1,9 +1,13 @@
 import pyaudio
 import wave
 
+audio = pyaudio.PyAudio()
+print(audio.get_device_info_by_index(1))
+
+
 def record_audio():
     FORMAT = pyaudio.paInt16
-    CHANNELS = 1
+    CHANNELS = 8
     RATE = 16000
     CHUNK = 1024
     RECORD_SECONDS = 10
