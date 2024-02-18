@@ -11,7 +11,7 @@ def recognize_from_microphone():
     result = speech_recognizer.recognize_once_async().get()
 
     if result.reason == speechsdk.ResultReason.RecognizedSpeech:
-        return "speech could be recognized: {}".format(result.text)
+        return " {}".format(result.text)
     elif result.reason == speechsdk.ResultReason.NoMatch:
         return "No speech could be recognized: {}".format(result.no_match_details)
 # Everything just returns right now.
