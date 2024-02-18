@@ -8,8 +8,8 @@ class MainMenu(Window):
 
         frame = tk.Frame(self.window, name="frame")
 
-        title_label = tk.Label(frame, text="BabbleBuddy", font=("Arial", 25))
-        title_label.pack()
+#        title_label = tk.Label(frame, text="BabbleBuddy", font=("Arial", 25))
+#        title_label.pack()
 
         info_label = tk.Label(frame, font=("Arial", 12), wraplength=275,
                               text="Break language barriers with BabbleBuddy!\n\nConvert audio into captions and translate into multiple languages in real-time.")
