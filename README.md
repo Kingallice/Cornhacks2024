@@ -1,4 +1,4 @@
-# <img src="https://github.com/Kingallice/Cornhacks2024/blob/main/Resources/Images/babblebuddybg.svg">
+# <img src="https://github.com/Kingallice/Cornhacks2024/blob/main/Resources/Images/babblebuddybkgd.svg">
 
 ## General Information:
 
