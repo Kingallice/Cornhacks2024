@@ -34,3 +34,4 @@ class Window:
 
     def focus(self):
         self.window.lift()
+
