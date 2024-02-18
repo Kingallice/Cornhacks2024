@@ -33,6 +33,9 @@ class SettingsMenu(Window):
         disclaimer_label = tk.Label(frame, text="*Setting changes will not reflect until next load!")
         disclaimer_label.pack(pady=2)
 
+        anchor_button = tk.Button(frame, text ="Anchor", font=("Arial",label_size),width=10, name="anchor-btn", command=self.set_anchor_clicked)
+        anchor_button.pack(pady=5)
+
         save_button = tk.Button(frame, text="Save", font=("Arial",label_size), width=10, name="save-btn", command=self.save_settings_clicked)
         save_button.pack(pady=5)
 
@@ -50,3 +53,17 @@ class SettingsMenu(Window):
     def save_settings_clicked(self):
         self.settings.UpdateSetting("font_size", self.font_size.get())
         self.settings.UpdateSetting("language", self.selected_lang.get())
+
+        #Idea is that anchor button is clicked and windows
+        #Become Transparent. A rectangle / ui then follows the mouse. After that once you clicksomewhere
+        #It places down an transparent box(where captions are shown) at an x + y position while also saving it to settings.
+    def set_anchor_clicked(self):
+        self.window.attributes('-alpha', 0.2)
+        def get_move(event):
+            x, y = event.x, event.y
+            c.coords(rect, x - 10, y - 10, x + 10, y + 10)
+
+        c = tk.Canvas(self.window)
+        rect = c.create_rectangle(0, 0, 0, 100)
+        c.bind('<Motion>', get_move)
+        c.pack()
