@@ -31,7 +31,7 @@ class SettingsMenu(Window):
 
         tk.Label(frame, text="Source Language", font=("Arial", label_size)).pack()
         self.source_lang = tk.StringVar(frame, self.settings.GetSetting("source_lang"))
-        source_lang_option = ttk.Combobox(frame, textvariable=self.source_lang, justify="right", values=["en-US","es-ES"], width=8, font=("Arial",text_size))
+        source_lang_option = ttk.Combobox(frame, textvariable=self.source_lang, justify="right", values=["en-US","es-ES","fr-FR","hi-IN","is-IS","it-IT","ja-JP","ko-KR","nl-NL","el-GR","de-DE","cs-CZ","ga-IE"], width=8, font=("Arial",text_size))
         source_lang_option.pack(pady=5)
 
         tk.Label(frame, text="Target Language", font=("Arial", label_size)).pack()

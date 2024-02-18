@@ -15,12 +15,10 @@ def recognize_from_microphone(lang: str, target:str):
 
     result = speech_recognizer.recognize_once_async().get()
 
-    print(result.text)
-
     if result.reason == speechsdk.ResultReason.RecognizedSpeech:
         text = result.text
         if lang[0:2] != target:
-            text = translate.TranslateText(result.text, target=target)
+            text = translate.TranslateText(result.text, source=lang[0:2], target=target)
         if len(text) > 0:
             return " {}".format(text)
         else:
