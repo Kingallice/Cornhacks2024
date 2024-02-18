@@ -1,7 +1,7 @@
 from translate import Translator
 
 class Diplomat:
-    def __init__(self, target, source:str, provider:str="MyMemory"):
+    def __init__(self, target, source:str, provider:str= "MyMemory"):
         self._target = target
         self._source = source
         self._provider = provider
@@ -28,7 +28,3 @@ class Diplomat:
 
     def getTranslation(self, phrase:str):
         return self._translator.translate(phrase)
-
-
-dip = Diplomat("es","en")
-print(dip.getTranslation("Hello"))
