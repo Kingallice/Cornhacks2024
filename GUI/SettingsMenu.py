@@ -8,8 +8,10 @@ class SettingsMenu(Window):
     def __init__(self):
         super().__init__()
         self.window.wm_title("BabbleBuddy: Settings")
+
+        self.set_size(400, 720)
+        
         self.settings = Settings()
-    
         text_size = self.settings.GetIntSetting("font_size")
         title_size = round(text_size*2)
         label_size = round(text_size*1.25)
@@ -49,6 +51,7 @@ class SettingsMenu(Window):
 
     def set_back_command(self, command):
         self.children()["back-btn"].configure(command=command)
+        self.window.protocol("WM_DELETE_WINDOW", command)
 
     def save_settings_clicked(self):
         self.settings.UpdateSetting("font_size", self.font_size.get())
