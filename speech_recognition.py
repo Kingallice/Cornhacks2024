@@ -1,13 +1,13 @@
 import azure.cognitiveservices.speech as speechsdk
-from recordaudio import record_audio
-
 import Services.KeyService as key
 from Services.ConfigurationService import Config
+from translator import Diplomat
 from JakeTestDirectory import jakeTkinter as window
 
 configure = Config()
 
 def recognize_from_microphone(lang: str):
+    dip = Diplomat("es", "en")
     speech_config = speechsdk.SpeechConfig(subscription=key.GetAzureKey(), region=configure.GetConfig("region"))
     speech_config.speech_recognition_language = lang
     audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
@@ -16,7 +16,8 @@ def recognize_from_microphone(lang: str):
     result = speech_recognizer.recognize_once_async().get()
 
     if result.reason == speechsdk.ResultReason.RecognizedSpeech:
-        return " {}".format(result.text)
+        text = dip.getTranslation(result.text)
+        return " {}".format(text)
     elif result.reason == speechsdk.ResultReason.NoMatch:
         return "No speech could be recognized: {}".format(result.no_match_details)
 # Everything just returns right now.
