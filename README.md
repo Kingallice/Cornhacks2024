@@ -3,40 +3,27 @@
 ## General Information:
 
 ### Inspiration:
-> Placelder information
-
-
+> The purpose 
 
 ### What it does:
-> Placeholder
-
-
-
-
+> Analyzes speech and in semi-to-real time live captions it. In addition to live captions, the application is also able to translate these captions in the same time frame. 
 
 ### How we built it:
-> Placeholder
-
-
-
-
-
+> Research was first conducted on what we would use to create this application. We had to decide on a much lighter scopre as this is only a 24 hour hackathon. Python was chosen as the main language early on due to its easability and its access to many modules + APIs. The use of an AI was immediately certain as soon as we had chosen the idea. Azure Speech AI was chosen due to it being both well documented + familiarity the group had to the AI. The project was then spilt up between members of the group. Jake worked on interfacing with azure and attempted to live caption computer audio, Carissa worked on the GUI, Tanner worked on trying to get translation to work locally, and Noah helped lead + worked on all parts of the project. 
 
 ### Accomplishments that we're proud of:
-> Placeholder
-
-
-
+> - Building a project that all group members are very proud of.
+> - Implementing an AI to a nearly full product within less than 24 hours.
+> - Being able to use all our different skillsets + experiences to create this. 
 
 ### What we learned: 
-> Placeholder 
-
-
+> - We all improved in using Python, Accessing APIs, Object-Oriented, and implementation of AI.
+> - Implementation of Azure AI was the biggest plus to the members unfamiliar in using AI in previous hackathons.
+> - We can accomplish much more in 24 hours than many of us first realized. 
 
 ### Built with:
 > - Python
 > - Azure API
-> - MyMemory Translator API
 > - Love <3
 
 ### Contributors 
