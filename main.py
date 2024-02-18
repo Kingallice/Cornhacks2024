@@ -16,6 +16,7 @@ def show_main_menu():
     settings_menu.hide()
     caption_overlay.hide()
     main_menu.enable()
+    main_menu.show()
     main_menu.focus()
 
 def show_settings():

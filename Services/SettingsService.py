@@ -3,22 +3,24 @@ import json
 class Settings:
 
     def __init__(self) -> None:
-        if not hasattr(Settings, "_settings"):
+        if not hasattr(Settings, "_location") and not hasattr(Settings, "_settings"):
+            Settings._location = "./Resources/settings.json"
             Settings._settings = Settings.LoadSettings()
 
     def LoadSettings() -> json:
         settings = json.loads("{}")
         try:
-            file = open("settings.json", "r")
+            file = open(Settings._location, "r")
             settings = json.loads(file.read()) 
             file.close()
-
         except FileNotFoundError:
             settings["height"] = 300
             settings["width"] = 400
-            settings["language"] = "en_us"
+            settings["font_size"] = 14
+            settings["source_lang"] = "en-US"
+            settings["target_lang"] = "en"
 
-            file = open("settings.json", "w")
+            file = open(Settings._location, "w")
             file.write(json.dumps(settings))
             file.close()
 
@@ -33,7 +35,7 @@ class Settings:
         return ""
     
     def GetIntSetting(self, key: str) -> str:
-        if key in Settings._settings and Settings._settings[key].isdigit():
+        if key in Settings._settings and str(Settings._settings[key]).isdigit():
             return int(self.GetSetting(key))
         return 0
     
@@ -48,7 +50,7 @@ class Settings:
 
     def SaveSettings(self):
         try:
-            file = open("settings.json", "w")
+            file = open(Settings._location, "w")
             file.write(json.dumps(Settings._settings))
             file.close()
         except Exception as ex:
@@ -56,7 +58,7 @@ class Settings:
     
     def SaveSettings():
         try:
-            file = open("settings.json", "w")
+            file = open(Settings._location, "w")
             file.write(json.dumps(Settings._settings))
             file.close()
         except Exception as ex:

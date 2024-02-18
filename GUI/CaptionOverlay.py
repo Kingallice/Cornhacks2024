@@ -2,14 +2,18 @@ import asyncio
 import tkinter as tk
 from GUI.Window import Window
 from Services.RecognitionService import *
-import threading
+from Services.SettingsService import Settings
 
 class CaptionOverlay(Window):
 
     def __init__(self) -> None:
         super().__init__()
 
+        self.settings = Settings()
+
         self.set_size(self.window.winfo_screenwidth()//2, 100)
+        # self.window.eval("tk::PlaceWindow . top")
+        self.anchorTopCenter()
 
         frame = tk.Frame(self.window)
 
@@ -27,6 +31,8 @@ class CaptionOverlay(Window):
 
 
     def update(self, newLine):
+        if newLine == None or len(newLine) == 0:
+            return
         targetText = self.children()["caption-txt"]
         targetText.tag_configure("center", justify='center')
         lines = targetText.get('0.0', tk.END).splitlines()
@@ -44,16 +50,20 @@ class CaptionOverlay(Window):
 
     def show(self):
         super().show()
-
-        self.window.after(0, self.begin_captioning())
+        self.begin_captioning()
 
     def begin_captioning(self):
-        # self.update(recognize_from_microphone("en-US", "es"))
+        source = self.settings.GetSetting("source_lang")
+        target = self.settings.GetSetting("target_lang")
+        while(self.window.winfo_ismapped()):
+            self.window.update()
+            try:
+                result = recognize_from_microphone(source, target)
+                self.update(result)
+            except:
+                pass
 
-        result = recognize_from_microphone("en-US","es")
-        text = str(result)
-        # if text:
-        self.update(text)
+
     # def buildOverlay():
 
     #     def close():

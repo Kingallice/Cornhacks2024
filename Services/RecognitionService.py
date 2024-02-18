@@ -5,20 +5,28 @@ from Services.TranslationService import Translation
 
 configure = Config()
 
+
 def recognize_from_microphone(lang: str, target:str):
     translate = Translation()
     speech_config = speechsdk.SpeechConfig(subscription=key.GetAzureKey(), region=configure.GetConfig("region"))
-    speech_config.speech_recognition_language = lang
     audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
+    speech_config.speech_recognition_language = lang
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
     result = speech_recognizer.recognize_once_async().get()
 
+    print(result.text)
+
     if result.reason == speechsdk.ResultReason.RecognizedSpeech:
-        text = translate.TranslateText(result.text, target="es")
-        return " {}".format(text)
+        text = result.text
+        if lang[0:2] != target:
+            text = translate.TranslateText(result.text, target=target)
+        if len(text) > 0:
+            return " {}".format(text)
+        else:
+            raise("No Text")
     elif result.reason == speechsdk.ResultReason.NoMatch:
-        return "No speech could be recognized: {}".format(result.no_match_details)
+        raise("No speech could be recognized: {}".format(result.no_match_details))
 # Everything just returns right now.
 
 def recognize_from_computer():
