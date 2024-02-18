@@ -7,9 +7,9 @@ from JakeTestDirectory import jakeTkinter as window
 
 configure = Config()
 
-def recognize_from_microphone():
+def recognize_from_microphone(lang: str):
     speech_config = speechsdk.SpeechConfig(subscription=key.GetAzureKey(), region=configure.GetConfig("region"))
-    speech_config.speech_recognition_language = "en-US"
+    speech_config.speech_recognition_language = lang
     audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
     speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_config)
 
@@ -37,4 +37,4 @@ def recognize_from_computer():
 
 taking_info = True
 while taking_info:
-    print(recognize_from_microphone())
+    print(recognize_from_microphone("en-US"))
