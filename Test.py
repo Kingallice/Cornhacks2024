@@ -1,7 +1,7 @@
 import os
 import azure.cognitiveservices.speech as speechsdk
-from Services.GetKeys import GetAzureKey
-from Services.GetConfiguration import GetConfig
+from Services.KeyService import GetAzureKey
+from Services.ConfigurationService import GetConfig
 
 def recognize_from_microphone():
     # This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"

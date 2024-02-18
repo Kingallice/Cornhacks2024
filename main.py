@@ -1,5 +1,6 @@
-from Services.GetKeys import GetAzureKey
-from Services.GetConfiguration import GetConfig
+from Services.KeyService import *
+from Services.ConfigurationService import *
+from Services.SettingsService import *
 from GUI.MainMenu import MainMenu
 from GUI.SettingsMenu import SettingsMenu
 
@@ -18,6 +19,16 @@ def show_settings():
 
 main_menu.set_settings_command(show_settings)
 settings_menu.set_back_command(show_main_menu)
+
+settings1 = Settings()
+print(settings1.GetSettings())
+print(settings1.GetSetting("height"))
+settings1.UpdateSetting("language", "sp_us")
+
+settings2 = Settings()
+settings2.AddSetting("cake","Hello!")
+print(settings2.GetSettings())
+
 
 def main() -> int:
     main_menu.start()

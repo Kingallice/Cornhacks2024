@@ -2,8 +2,8 @@ import azure.cognitiveservices.speech as speechsdk
 from recordaudio import record_audio
 
 
-import Services.GetKeys as key
-import Services.GetConfiguration as config
+import Services.KeyService as key
+import Services.ConfigurationService as config
 from JakeTestDirectory import jakeTkinter as window
 
 
